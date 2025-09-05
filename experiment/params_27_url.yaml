@@ -1,7 +1,7 @@
 # @package _global_
 
 core:
-  url_data: 'https://faubox.rrze.uni-erlangen.de/getlink/fiDnuA26Um9qsLwZR1NrXq/IGM_Schiaparelli/'
+  url_data: 'git@github.com:FraTemme/IGM_Schiaparelli.git'
 
 defaults:
 - override /inputs:
