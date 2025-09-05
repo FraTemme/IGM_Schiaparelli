@@ -1,0 +1,58 @@
+# @package _global_
+
+core:
+  url_data: 'https://faubox.rrze.uni-erlangen.de/getlink/fiDnuA26Um9qsLwZR1NrXq/IGM_Schiaparelli/'
+
+defaults:
+- override /inputs:
+  - load_ncdf
+- override /processes:
+  - data_assimilation
+  - iceflow
+- override /outputs: []
+
+inputs:
+  load_ncdf:
+    input_file: input_thkobs_corrected3.nc
+
+processes:
+  iceflow:
+    physics:
+      init_slidingco: 0.05
+    emulator:
+      save_model: true
+  data_assimilation:
+    output:
+      save_result_in_ncdf: output.nc
+      vars_to_save:
+      - usurf
+      - topg
+      - thk
+      - slidingco
+      - velsurf_mag
+      - velsurfobs_mag
+      - divflux
+      - icemask
+      - arrhenius
+      - thkobs
+      - dhdt
+      plot2d_live: false
+      plot2d: false
+    control_list:
+      - thk
+    cost_list:
+      - velsurf
+    optimization:
+      retrain_iceflow_model: true
+      nbitmax: 1500
+    fitting:
+      velsurfobs_std: 0.01
+      uniformize_thkobs: true
+      thkobs_std: 100.0
+    regularization:
+      slidingco: 10
+      smooth_anisotropy_factor: 1.0
+      convexity_weight: 1
+      thk: 1.0e+4
+
+outputs: {}
