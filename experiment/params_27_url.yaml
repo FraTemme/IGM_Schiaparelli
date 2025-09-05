@@ -1,7 +1,7 @@
 # @package _global_
 
 core:
-  url_data: 'https://github.com/FraTemme/IGM_Schiaparelli.git'
+  url_data: 'https://github.com/FraTemme/IGM_Schiaparelli/archive/refs/heads/main.zip'
 
 defaults:
 - override /inputs:
